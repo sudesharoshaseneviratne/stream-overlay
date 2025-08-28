@@ -1,102 +1,30 @@
 'use client';
 import React from 'react';
+import Lightning from '../components/Lightning';
+import GlitchText from '../components/GlitchText';
+import SimpleParticles from '../components/SimpleParticles';
 
-export default function InGame() {
-    return (
-        <div className="w-screen h-screen" style={{ backgroundColor: 'transparent' }}>
-            {/* Animated Border Container */}
-            <div className="relative w-full h-full pointer-events-none">
+const StartSoon: React.FC = () => {
+  return (
+    <div className="relative w-screen h-screen bg-black overflow-hidden flex items-center justify-center font-sans">
+      {/* Particles Background - Above background, behind lightning */}
+      <div className="absolute inset-0 w-full h-full z-[1]">
+        <SimpleParticles
+          particleCount={200}
+          colors={['#ffffff', '#00ffff', '#ff00ff']}
+          speed={0.8}
+          size={3}
+          opacity={0.8}
+        />
+      </div>
 
-                {/* Clockwise Flowing Border */}
-                <div className="absolute inset-0">
-                    {/* Top Border */}
-                    <div
-                        className="absolute top-0 left-0 w-full h-[2px] animate-border-flow-cw"
-                        style={{
-                            background: 'linear-gradient(90deg, transparent 0%, #00ffff 25%, #ff00ff 50%, #00ffff 75%, transparent 100%)',
-                            backgroundSize: '300% 100%',
-                        }}
-                    />
+      {/* Lightning Background */}
+      <div className="absolute inset-0 w-full h-full z-[2] opacity-80 mix-blend-screen">
+        <Lightning hue={180} xOffset={0} speed={1.2} intensity={0.8} size={1.5} />
+        <Lightning hue={300} xOffset={0} speed={0.8} intensity={0.6} size={1.2} />
+      </div>
+    </div>
+  );
+};
 
-                    {/* Right Border */}
-                    <div
-                        className="absolute top-0 right-0 w-[2px] h-full animate-border-flow-cw"
-                        style={{
-                            background: 'linear-gradient(180deg, transparent 0%, #00ffff 25%, #ff00ff 50%, #00ffff 75%, transparent 100%)',
-                            backgroundSize: '100% 300%',
-                            animationDelay: '0.75s'
-                        }}
-                    />
-
-                    {/* Bottom Border */}
-                    <div
-                        className="absolute bottom-0 right-0 w-full h-[2px] animate-border-flow-cw"
-                        style={{
-                            background: 'linear-gradient(270deg, transparent 0%, #00ffff 25%, #ff00ff 50%, #00ffff 75%, transparent 100%)',
-                            backgroundSize: '300% 100%',
-                            animationDelay: '1.5s'
-                        }}
-                    />
-
-                    {/* Left Border */}
-                    <div
-                        className="absolute bottom-0 left-0 w-[2px] h-full animate-border-flow-cw"
-                        style={{
-                            background: 'linear-gradient(0deg, transparent 0%, #00ffff 25%, #ff00ff 50%, #00ffff 75%, transparent 100%)',
-                            backgroundSize: '100% 300%',
-                            animationDelay: '2.25s'
-                        }}
-                    />
-                </div>
-
-                {/* Counter-Clockwise Flowing Border (Inner) */}
-                <div className="absolute inset-[3px]">
-                    {/* Top Border */}
-                    <div
-                        className="absolute top-0 left-0 w-full h-[1px] animate-border-flow-ccw opacity-70"
-                        style={{
-                            background: 'linear-gradient(90deg, transparent 0%, #ff00ff 25%, #00ffff 50%, #ff00ff 75%, transparent 100%)',
-                            backgroundSize: '300% 100%',
-                        }}
-                    />
-
-                    {/* Right Border */}
-                    <div
-                        className="absolute top-0 right-0 w-[1px] h-full animate-border-flow-ccw opacity-70"
-                        style={{
-                            background: 'linear-gradient(180deg, transparent 0%, #ff00ff 25%, #00ffff 50%, #ff00ff 75%, transparent 100%)',
-                            backgroundSize: '100% 300%',
-                            animationDelay: '1.5s'
-                        }}
-                    />
-
-                    {/* Bottom Border */}
-                    <div
-                        className="absolute bottom-0 right-0 w-full h-[1px] animate-border-flow-ccw opacity-70"
-                        style={{
-                            background: 'linear-gradient(270deg, transparent 0%, #ff00ff 25%, #00ffff 50%, #ff00ff 75%, transparent 100%)',
-                            backgroundSize: '300% 100%',
-                            animationDelay: '1s'
-                        }}
-                    />
-
-                    {/* Left Border */}
-                    <div
-                        className="absolute bottom-0 left-0 w-[1px] h-full animate-border-flow-ccw opacity-70"
-                        style={{
-                            background: 'linear-gradient(0deg, transparent 0%, #ff00ff 25%, #00ffff 50%, #ff00ff 75%, transparent 100%)',
-                            backgroundSize: '100% 300%',
-                            animationDelay: '0.5s'
-                        }}
-                    />
-                </div>
-
-            </div>
-
-            {/* Content Area - Completely transparent for game overlay */}
-            <div className="absolute inset-4 z-10">
-                {/* This area is completely transparent for the game to show through */}
-            </div>
-        </div>
-    );
-}
+export default StartSoon;
