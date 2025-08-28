@@ -33,7 +33,7 @@ const StartSoon: React.FC = () => {
             enableOnHover={false}
             className="font-mono uppercase tracking-wider text-[clamp(1.5rem,8vw,6rem)] leading-none italic"
           >
-            BE‎ RIGHT
+            BERIGHT
           </GlitchText>
           <GlitchText
             speed={1.2}
