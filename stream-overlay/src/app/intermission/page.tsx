@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import Lightning from '../components/Lightning';
 import GlitchText from '../components/GlitchText';
 import SimpleParticles from '../components/SimpleParticles';
@@ -81,10 +82,11 @@ const Intermission: React.FC = () => {
                 className="relative border-2 border-gray-600/40 overflow-hidden shadow-2xl"
                 style={{ aspectRatio: '16/9' }}
               >
-                <img 
+                <Image 
                   src="/looking-for-game-capture.jpg" 
                   alt="Looking for game capture"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             </div>
